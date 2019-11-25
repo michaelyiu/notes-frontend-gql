@@ -14,39 +14,31 @@ const moment = require('moment');
 const Notes = () => {
 	const { values, handleChange, handleSubmit } = useForm(() => {
 
-		addNote(values);
+		addNoteGQL(values);
 
 	}, {
 		title: '',
 		body: ''
 	})
 
-	const [addNote] = useMutation(
+	const [addNoteGQL] = useMutation(
 		ADD_NOTE,
 		{
 			variables: values,
 			onCompleted() {
 				setPendingNote(false);
+				addNote(values);
 			}
-		},
-
+		}
 	)
 
-	const { notes, setNotes, pendingNote, setPendingNote } = useContext(NoteContext);
-	// const [notes, setNotes] = useState([]);
+	const { notes, setNotes, addNote, pendingNote, setPendingNote } = useContext(NoteContext);
 	const { loading, data, error } = useQuery(GET_NOTES);
-
-	// const newNoteInput = (
-
-	// )
-
 
 	useEffect(() => {
 		if (data && data.notes) {
-			// const date = new Date(data.notes.date);
 			const date = moment.parseZone(data.notes.date).format("LLL");
 			console.log(data.notes);
-			// console.log(date);
 			setNotes(data.notes)
 		}
 	}, [data])

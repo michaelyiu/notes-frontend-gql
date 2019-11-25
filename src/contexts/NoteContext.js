@@ -13,7 +13,7 @@ const NotesContextProvider = (props) => {
 
 	const addNote = (note) => {
 		if (note)
-			setNotes([...notes, note])
+			setNotes([note, ...notes])
 	}
 
 	// const findExpAndUpdate = (exp_id, newExp) => {
