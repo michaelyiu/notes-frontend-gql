@@ -45,6 +45,14 @@ const Notes = () => {
 
 	if (loading) return <Spinner />
 
+	const onEditClick = (noteId) => {
+		console.log('on edit click', noteId)
+	}
+
+	const onDeleteClick = (noteId) => {
+		console.log('on delete click', noteId)
+	}
+
 	return (
 		<div className="notes-page">
 
@@ -69,8 +77,18 @@ const Notes = () => {
 			<div>
 				{notes.length > 0 ? notes.map(note => (
 					<div key={note.id} className={"note-container"}>
-						<p className="note-title">{note.title}</p>
-						<p className="note-body"><span>{moment(note.date).format("LLL")}</span>{note.body}</p>
+						<div className="note-contents">
+							<p className="note-title">{note.title}</p>
+							<p className="note-body"><span>{moment(note.date).format("LLL")}</span>{note.body}</p>
+						</div>
+						<div className="note-options">
+							<span onClick={() => onEditClick(note.id)}>
+								<i className="fas fa-pencil-alt"></i>
+							</span>
+							<span onClick={() => onDeleteClick(note.id)}>
+								<i className="fas fa-trash-alt"></i>
+							</span>
+						</div>
 					</div>
 				)) : "Your notes will show up here!"}
 			</div>

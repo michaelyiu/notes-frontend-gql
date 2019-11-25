@@ -100,6 +100,7 @@ form{
 }
 
 .note-container{
+	display: flex;
 	margin: 20px 15px;
 	border-bottom: 1px solid #ced4da;
 }
@@ -125,6 +126,27 @@ p.note-body{
 	margin: 0;
 	font-size: 14px;
 }
+
+.note-options{
+	display:none;
+	margin-left: auto;
+}
+
+.note-container:hover > .note-options{
+	display:block;
+}
+
+.note-contents{
+	margin-right: auto;
+}
+.fas{
+	margin: 0 5px;
+	transition: color 0.2s ease-in-out;
+}
+.fas:hover{
+	color: rgb(22, 82, 110);
+}
+
 
 @media only screen and (min-width: 768px) {
   /* For desktop: */
