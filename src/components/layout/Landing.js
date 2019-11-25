@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
 
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Landing = () => {
+  const { isAuthenticated } = useContext(AuthContext);
 
+  const history = useHistory();
+
+  if (isAuthenticated)
+    history.push("/notes");
   return (
     <div className="landing">
       <div className="container">

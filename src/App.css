@@ -99,6 +99,20 @@ form{
 	text-align: center;
 }
 
+.note-container{
+	margin: 20px 15px;
+	border-bottom: 1px solid #ced4da;
+}
+
+p.note-title{
+	font-weight: 500;
+}
+p.note-title,
+p.note-body{
+	margin: 0;
+	font-size: 14px;
+}
+
 @media only screen and (min-width: 768px) {
   /* For desktop: */
   .col-1 {width: 8.33%;}

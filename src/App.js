@@ -14,6 +14,7 @@ import Login from "./components/auth/Login";
 import Notes from "./components/notes/Notes";
 
 import AuthContextProvider from './contexts/AuthContext';
+import NoteContextProvider from './contexts/NoteContext';
 
 
 import SideNav from './components/layout/SideNav';
@@ -27,19 +28,21 @@ const App = () => {
     <div className="App">
       <ApolloProvider client={client}>
         <AuthContextProvider>
-          <Router>
-            {/* <div className="flex-container"> */}
-            <SideNav />
-            <div className="page-content">
-              <Route exact path="/" component={Landing} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Switch>
-                <PrivateRoute exact path="/notes" component={Notes} />
-              </Switch>
-            </div>
+          <NoteContextProvider>
+            <Router>
+              {/* <div className="flex-container"> */}
+              <SideNav />
+              <div className="page-content">
+                <Route exact path="/" component={Landing} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/login" component={Login} />
+                <Switch>
+                  <PrivateRoute exact path="/notes" component={Notes} />
+                </Switch>
+              </div>
 
-          </Router>
+            </Router>
+          </NoteContextProvider>
         </AuthContextProvider>
       </ApolloProvider>
     </div>
