@@ -13,7 +13,9 @@ const moment = require('moment');
 
 const Notes = () => {
 	const { values, handleChange, handleSubmit } = useForm(() => {
+
 		addNote(values);
+
 	}, {
 		title: '',
 		body: ''
@@ -22,32 +24,21 @@ const Notes = () => {
 	const [addNote] = useMutation(
 		ADD_NOTE,
 		{
-			variables: values
-		}
+			variables: values,
+			onCompleted() {
+				setPendingNote(false);
+			}
+		},
+
 	)
 
-	const { notes, setNotes, pendingNote } = useContext(NoteContext);
+	const { notes, setNotes, pendingNote, setPendingNote } = useContext(NoteContext);
 	// const [notes, setNotes] = useState([]);
 	const { loading, data, error } = useQuery(GET_NOTES);
 
-	const newNoteInput = (
-		<form onSubmit={handleSubmit}>
-			<TextFieldGroup
-				placeholder="Title"
-				name="title"
-				value={values.title}
-				onChange={handleChange}
-			/>
-			<TextFieldGroup
-				placeholder="Body"
-				name="body"
-				value={values.body}
-				onChange={handleChange}
-			/>
-			{/* maybe hide this button? */}
-			<button type="submit" value="Submit">Submit</button>
-		</form>
-	)
+	// const newNoteInput = (
+
+	// )
 
 
 	useEffect(() => {
@@ -65,10 +56,27 @@ const Notes = () => {
 	return (
 		<div className="notes-page">
 
-			{pendingNote ? newNoteInput : null}
+			<form onSubmit={handleSubmit} className={"pending-note-container " + (pendingNote ? 'slideNoteDown' : null)}>
+				<input type='text'
+					className="note-title"
+					placeholder="Title"
+					name="title"
+					value={values.title}
+					onChange={handleChange}
+				/>
+				<input type='text'
+					className="note-body"
+					placeholder="Body"
+					name="body"
+					value={values.body}
+					onChange={handleChange}
+				/>
+				{/* maybe hide this button? */}
+				<button type="submit" value="Submit">Submit</button>
+			</form>
 			<div>
 				{notes.length > 0 ? notes.map(note => (
-					<div key={note.id} className="note-container">
+					<div key={note.id} className={"note-container"}>
 						<p className="note-title">{note.title}</p>
 						<p className="note-body"><span>{moment(note.date).format("LLL")}</span>{note.body}</p>
 					</div>
