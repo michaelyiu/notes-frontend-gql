@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { useForm } from '../../hooks';
 
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { ADD_NOTE } from '../../gql/Mutations/notes';
+import { ADD_NOTE, EDIT_NOTE, DELETE_NOTE } from '../../gql/Mutations/notes';
 import { GET_NOTES } from "../../gql/Queries/notes";
 import { NoteContext } from '../../contexts/NoteContext';
 
@@ -32,13 +32,22 @@ const Notes = () => {
 		}
 	)
 
-	const { notes, setNotes, addNote, pendingNote, setPendingNote } = useContext(NoteContext);
+	const [deleteNoteGQL] = useMutation(
+		DELETE_NOTE,
+		{
+			onCompleted(data) {
+				if (data && data.deleteNote)
+					deleteNote(data.deleteNote);
+			}
+		}
+	)
+
+
+	const { notes, setNotes, addNote, deleteNote, pendingNote, setPendingNote } = useContext(NoteContext);
 	const { loading, data, error } = useQuery(GET_NOTES);
 
 	useEffect(() => {
 		if (data && data.notes) {
-			const date = moment.parseZone(data.notes.date).format("LLL");
-			console.log(data.notes);
 			setNotes(data.notes)
 		}
 	}, [data])
@@ -50,7 +59,7 @@ const Notes = () => {
 	}
 
 	const onDeleteClick = (noteId) => {
-		console.log('on delete click', noteId)
+		deleteNoteGQL({ variables: { id: noteId } })
 	}
 
 	return (
