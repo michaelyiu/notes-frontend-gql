@@ -69,6 +69,12 @@ ul.navbar-nav{
 	color: #CFD8DC;
 	font-size: 14px;
 	padding: 16px 24px;
+	transition: all 0.2s ease-in-out;
+}
+
+#menu .navbar-nav a:hover,
+#menu .navbar-nav div.nav-item:hover{
+	background: rgba(0, 0, 0, 0.08);
 }
 
 .form-group {
@@ -87,14 +93,27 @@ ul.navbar-nav{
   color: #bbb;
 }
 
-input.btn[type="submit"]{
+.btn-submit{
+	width: 50%;
+	font-size:12px;
+	line-height: 12px;
 	color: #fff;
 	background-color: #17a2b8;
 	border: 1px solid #17a2b8;
 	border-radius: 3px;
 	padding: 10px 8px;
-
-
+	margin: 5px;
+}
+.btn-cancel{
+	width: 50%;
+	font-size:12px;
+	line-height: 12px;
+	color: #fff;
+	background-color: #e40505;
+	border: 1px solid #e40505;
+	border-radius: 3px;
+	padding: 10px 8px;
+	margin: 0 5px;
 }
 
 .row .col-8{
@@ -106,21 +125,53 @@ form{
 
 .note-container{
 	display: flex;
-	margin: 20px 15px;
+	align-items: center;
+	/* margin:  0 15px;*/
+	padding: 20px 10px; 
 	border-bottom: 1px solid #ced4da;
+	transition: all 0.2s ease-in-out;
+}
+
+.note-container:hover{
+	background: rgba(0, 0, 0, 0.08);
 }
 
 .pending-note-container{
-	margin-top: -20px;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	width: 75%;
+	margin-top: -225px;
 	visibility: hidden;
 	height:0;
 	transition: all 0.3s ease-in-out;
 }
+
+.edit-note-container{
+	height: 100%;
+	overflow:hidden;
+	display: flex;
+	align-items: center;
+}
+
+.edit-note-form{
+	width: 75%;
+	margin: 0px auto;
+}
+
+.edit-note-form textarea.form-control{
+	min-height: 150px;
+}
+
 .slideNoteDown {
 	visibility: visible;
 	top: 0;
 	margin-top: 0px;
 	height: 20px;
+}
+
+.notes-list{
+	margin-top: 230px;
 }
 
 p.note-title{
@@ -160,6 +211,22 @@ p.note-body{
 	flex-direction: column;
 	margin-right: auto;
 }
+
+.new-note-title,
+.new-note-body{
+	padding: 0 5px;
+	border-radius: 3px;
+	border: 1px solid #ced4da;
+	margin-top:10px;
+	padding: 10px 8px;
+
+}
+.new-note-body{
+	resize: none;
+	min-height: 60px;
+	margin-bottom: 10px;
+}
+
 .fas{
 	margin: 0 5px;
 	transition: color 0.2s ease-in-out;
@@ -196,6 +263,9 @@ p.note-body{
 		width: 200px;
 	}
 	p.note-body{
-	padding-left:20px;
-}
+		padding-left:20px;
+	}
+	.pending-note-container{
+		width: 50%;
+	}
 } 

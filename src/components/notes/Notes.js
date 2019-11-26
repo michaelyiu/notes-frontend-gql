@@ -13,6 +13,7 @@ import Spinner from '../common/Spinner';
 const moment = require('moment');
 
 const Notes = () => {
+
 	const { values, handleChange, handleSubmit } = useForm(() => {
 		addNoteGQL(values);
 	}, {
@@ -60,27 +61,35 @@ const Notes = () => {
 	const onDeleteClick = (noteId) => {
 		deleteNoteGQL({ variables: { id: noteId } })
 	}
+
 	return (
 		<div className="notes-page">
 			<form onSubmit={handleSubmit} className={"pending-note-container " + (pendingNote ? 'slideNoteDown' : null)}>
 				<input type='text'
-					className="note-title"
+					className="new-note-title"
 					placeholder="Title"
 					name="title"
 					value={values.title}
 					onChange={handleChange}
 				/>
-				<input type='text'
-					className="note-body"
+				<textarea type='text'
+					className="new-note-body"
 					placeholder="Body"
 					name="body"
 					value={values.body}
 					onChange={handleChange}
 				/>
 				{/* maybe hide this button? */}
-				<button type="submit" value="Submit">Submit</button>
+				<div className="btn-group">
+					<input type="submit" className="btn-submit col-2" />
+					<input type="button" onClick={() => {
+						setPendingNote(false);
+					}} className="btn-cancel col-2" value="Cancel" />
+				</div>
+
+
 			</form>
-			<div>
+			<div className="notes-list">
 				{notes.length > 0 ? notes.map(note => (
 					<div key={note.id} className={"note-container"}>
 						<Link to={`/note/${note.id}`} onClick={() => {
@@ -97,11 +106,6 @@ const Notes = () => {
 							</div>
 						</Link>
 						<div className="note-options">
-							{/* <span>
-								<Link to={`/note/${note.id}`}>
-									<i className="fas fa-pencil-alt"></i>
-								</Link>
-							</span> */}
 							<span onClick={() => onDeleteClick(note.id)}>
 								<i className="fas fa-trash-alt"></i>
 							</span>
