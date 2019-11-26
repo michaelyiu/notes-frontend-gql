@@ -14,7 +14,7 @@ import { NavContext } from '../../contexts/NavContext';
 
 const moment = require('moment');
 
-const Note = () => {
+const EditNote = () => {
 	const { findPostById, findPostAndUpdate } = useContext(NoteContext);
 	const { setNavBack } = useContext(NavContext);
 	const { id } = useParams();
@@ -79,4 +79,4 @@ const Note = () => {
 	)
 }
 
-export default Note;
+export default EditNote;

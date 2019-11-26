@@ -10,7 +10,7 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Notes from "./components/notes/Notes";
-import Note from './components/note/Note';
+import Note from './components/note/EditNote';
 
 import AuthContextProvider from './contexts/AuthContext';
 import NoteContextProvider from './contexts/NoteContext';
@@ -35,7 +35,6 @@ const App = () => {
           <NoteContextProvider>
             <NavContextProvider>
               <Router>
-                {/* <div className="flex-container"> */}
                 <SideNav />
                 <div className="page-content">
                   <Route exact path="/" component={Landing} />
@@ -45,7 +44,7 @@ const App = () => {
                     <PrivateRoute exact path="/notes" component={Notes} />
                   </Switch>
                   <Switch>
-                    <PrivateRoute exact path="/note/:id" component={Note} />
+                    <PrivateRoute exact path="/edit-note/:id" component={Note} />
                   </Switch>
                 </div>
 
