@@ -1,21 +1,19 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { useForm } from '../../hooks';
 
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { ADD_NOTE, EDIT_NOTE, DELETE_NOTE } from '../../gql/Mutations/notes';
+import { ADD_NOTE, DELETE_NOTE } from '../../gql/Mutations/notes';
 import { GET_NOTES } from "../../gql/Queries/notes";
 import { NoteContext } from '../../contexts/NoteContext';
 
-import TextFieldGroup from '../common/TextFieldGroup';
 import Spinner from '../common/Spinner';
 
 const moment = require('moment');
 
 const Notes = () => {
 	const { values, handleChange, handleSubmit } = useForm(() => {
-
 		addNoteGQL(values);
-
 	}, {
 		title: '',
 		body: ''
@@ -25,9 +23,11 @@ const Notes = () => {
 		ADD_NOTE,
 		{
 			variables: values,
-			onCompleted() {
-				setPendingNote(false);
-				addNote(values);
+			onCompleted(data) {
+				if (data && data.createNote) {
+					setPendingNote(false);
+					addNote(data.createNote);
+				}
 			}
 		}
 	)
@@ -44,19 +44,15 @@ const Notes = () => {
 
 
 	const { notes, setNotes, addNote, deleteNote, pendingNote, setPendingNote } = useContext(NoteContext);
-	const { loading, data, error } = useQuery(GET_NOTES);
+	const { loading, data } = useQuery(GET_NOTES);
 
 	useEffect(() => {
 		if (data && data.notes) {
 			setNotes(data.notes)
 		}
-	}, [data])
+	}, [setNotes, data])
 
 	if (loading) return <Spinner />
-
-	const onEditClick = (noteId) => {
-		console.log('on edit click', noteId)
-	}
 
 	const onDeleteClick = (noteId) => {
 		deleteNoteGQL({ variables: { id: noteId } })
@@ -64,7 +60,6 @@ const Notes = () => {
 
 	return (
 		<div className="notes-page">
-
 			<form onSubmit={handleSubmit} className={"pending-note-container " + (pendingNote ? 'slideNoteDown' : null)}>
 				<input type='text'
 					className="note-title"
@@ -86,14 +81,18 @@ const Notes = () => {
 			<div>
 				{notes.length > 0 ? notes.map(note => (
 					<div key={note.id} className={"note-container"}>
-						<div className="note-contents">
-							<p className="note-title">{note.title}</p>
-							<p className="note-body"><span>{moment(note.date).format("LLL")}</span>{note.body}</p>
-						</div>
+						<Link to={`/note/${note.id}`}>
+							<div className="note-contents">
+								<p className="note-title">{note.title}</p>
+								<p className="note-body"><span>{moment(note.date).format("LLL")}</span>{note.body}</p>
+							</div>
+						</Link>
 						<div className="note-options">
-							<span onClick={() => onEditClick(note.id)}>
-								<i className="fas fa-pencil-alt"></i>
-							</span>
+							{/* <span>
+								<Link to={`/note/${note.id}`}>
+									<i className="fas fa-pencil-alt"></i>
+								</Link>
+							</span> */}
 							<span onClick={() => onDeleteClick(note.id)}>
 								<i className="fas fa-trash-alt"></i>
 							</span>

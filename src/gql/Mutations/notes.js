@@ -12,7 +12,11 @@ const ADD_NOTE = gql`
 
 const EDIT_NOTE = gql`
 	mutation editNote($id: ID!, $title: String!, $body: String!) {
-		editNote(id: $id, title: $title, body: $body)
+		editNote(id: $id, title: $title, body: $body){
+			id
+			title
+			body
+		}
 	}
 `;
 

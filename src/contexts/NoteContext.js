@@ -16,17 +16,17 @@ const NotesContextProvider = (props) => {
 			setNotes([note, ...notes])
 	}
 
-	// const findExpAndUpdate = (exp_id, newExp) => {
-	// 	const currentExpIndex = notes.indexOf(findExpById(exp_id));
-	// 	notes[currentExpIndex] = newExp;
-	// }
+	const findPostAndUpdate = (post_id, newPost) => {
+		const currentPostIndex = notes.indexOf(findPostById(post_id));
+		notes[currentPostIndex] = newPost;
+	}
 
-	// const findExpById = (exp_id) => {
-	// 	return notes.find(({ id }) => id === exp_id);
-	// }
+	const findPostById = (post_id) => {
+		return notes.find(({ id }) => id === post_id);
+	}
 
-	const deleteNote = (exp_id) => {
-		setNotes(notes.filter(exp => exp.id !== exp_id))
+	const deleteNote = (post_id) => {
+		setNotes(notes.filter(exp => exp.id !== post_id))
 	}
 
 	const clearNotes = () => {
@@ -40,7 +40,7 @@ const NotesContextProvider = (props) => {
 	}, [notes])
 
 	return (
-		<NoteContext.Provider value={{ notes, setNotes, addNote, deleteNote, clearNotes, pendingNote, setPendingNote }}>
+		<NoteContext.Provider value={{ notes, setNotes, addNote, deleteNote, clearNotes, pendingNote, setPendingNote, findPostById, findPostAndUpdate }}>
 			{props.children}
 		</NoteContext.Provider>
 	)

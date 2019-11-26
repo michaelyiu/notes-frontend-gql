@@ -131,6 +131,14 @@ p.note-body{
 	display:none;
 	margin-left: auto;
 }
+.notes-page a{
+	color: black;
+	text-decoration: none;
+}
+
+.note-container a{
+	width: 100%;
+}
 
 .note-container:hover > .note-options{
 	display:block;
@@ -144,6 +152,7 @@ p.note-body{
 	transition: color 0.2s ease-in-out;
 }
 .fas:hover{
+	z-index: 10;
 	color: rgb(22, 82, 110);
 }
 

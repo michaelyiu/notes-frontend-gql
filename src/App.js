@@ -12,6 +12,7 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Notes from "./components/notes/Notes";
+import Note from './components/note/Note';
 
 import AuthContextProvider from './contexts/AuthContext';
 import NoteContextProvider from './contexts/NoteContext';
@@ -38,6 +39,9 @@ const App = () => {
                 <Route exact path="/login" component={Login} />
                 <Switch>
                   <PrivateRoute exact path="/notes" component={Notes} />
+                </Switch>
+                <Switch>
+                  <PrivateRoute exact path="/note/:id" component={Note} />
                 </Switch>
               </div>
 
