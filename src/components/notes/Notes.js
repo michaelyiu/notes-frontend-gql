@@ -90,7 +90,7 @@ const Notes = () => {
 						}>
 							<div className="note-contents">
 								<p className="note-title">{note.title}</p>
-								<p className="note-body"><span>{moment(note.updated_at).format("LLL")}</span>{note.body}</p>
+								<p className="note-body"><span>{moment(note.updated_at).fromNow()}</span>{note.body}</p>
 							</div>
 						</Link>
 						<div className="note-options">
