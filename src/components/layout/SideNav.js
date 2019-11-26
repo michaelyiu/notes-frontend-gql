@@ -14,6 +14,7 @@ const SideNav = () => {
 
 	const onLogoutClick = e => {
 		e.preventDefault();
+		setPendingNote(false);
 		localStorage.clear();
 		toggleAuth();
 		history.push("/login");

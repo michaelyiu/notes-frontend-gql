@@ -1,0 +1,52 @@
+form{
+	text-align: center;
+}
+
+.form-group {
+	margin: 5px 0;
+}
+
+.form-control {
+	width: 100%;
+	padding: 10px 8px;
+	border-radius: 2px;
+	border: 1px solid #ced4da;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.form-control::placeholder {
+  color: #bbb;
+}
+
+.btn-submit, .btn-cancel{
+	width: 50%;
+	font-size:12px;
+	line-height: 12px;
+	color: #fff;
+	border-radius: 3px;
+	padding: 10px 8px;
+}
+
+.btn-submit{
+	background-color: #17a2b8;
+	border: 1px solid #17a2b8;
+	margin: 5px;
+}
+
+.btn-cancel{
+	background-color: #e40505;
+	border: 1px solid #e40505;
+	margin: 0 5px;
+}
+
+textarea{
+	font-family: inherit; 
+	font-size: inherit;
+	font-size: 14px;	
+}
+
+.edit-note-form textarea.form-control{
+	min-height: 150px;
+}

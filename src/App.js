@@ -5,8 +5,6 @@ import client from "./apollo";
 
 import PrivateRoute from './components/common/PrivateRoute';
 
-import Hello from './Hello';
-
 import Landing from "./components/layout/Landing";
 
 import Register from "./components/auth/Register";
@@ -21,7 +19,11 @@ import NavContextProvider from './contexts/NavContext';
 
 import SideNav from './components/layout/SideNav';
 
-import "./App.css";
+import "./css/App.css";
+import "./css/Layout.css";
+import "./css/Navbar.css";
+import "./css/Notes.css";
+import "./css/Form.css";
 
 const App = () => {
 
