@@ -7,7 +7,7 @@ import { NoteContext } from '../../contexts/NoteContext';
 import Note from "./Note";
 
 import Spinner from '../common/Spinner';
-import AddNote from './AddNote';
+import AddNote from '../note/AddNote';
 
 
 const Notes = () => {
