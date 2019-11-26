@@ -89,8 +89,11 @@ const Notes = () => {
 						}
 						}>
 							<div className="note-contents">
-								<p className="note-title">{note.title}</p>
-								<p className="note-body"><span>{moment(note.updated_at).fromNow()}</span>{note.body}</p>
+								<div className="note-block">
+									<p className="note-title">{note.title}</p>
+									<p className="note-time">{moment(note.updated_at).fromNow()}</p>
+								</div>
+								<p className="note-body">{note.body}</p>
 							</div>
 						</Link>
 						<div className="note-options">

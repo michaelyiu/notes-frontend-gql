@@ -127,10 +127,16 @@ p.note-title{
 	font-weight: 500;
 }
 p.note-title,
+p.note-time,
 p.note-body{
 	margin: 0;
 	font-size: 14px;
 }
+
+p.note-body{
+	margin-top :5px;
+}
+
 
 .note-options{
 	display:none;
@@ -150,6 +156,8 @@ p.note-body{
 }
 
 .note-contents{
+	display: flex;
+	flex-direction: column;
 	margin-right: auto;
 }
 .fas{
@@ -180,8 +188,14 @@ p.note-body{
 
 
 
-/* @media (min-width: 768px) {
-	.container{
-		max-width: 720px;
+@media (min-width: 768px) { 
+	.note-contents{
+		flex-direction: row;
 	}
-} */
+	div.note-block{
+		width: 200px;
+	}
+	p.note-body{
+	padding-left:20px;
+}
+} 
