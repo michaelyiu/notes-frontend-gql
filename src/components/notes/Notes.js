@@ -6,6 +6,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { ADD_NOTE, DELETE_NOTE } from '../../gql/Mutations/notes';
 import { GET_NOTES } from "../../gql/Queries/notes";
 import { NoteContext } from '../../contexts/NoteContext';
+import { NavContext } from '../../contexts/NavContext';
 
 import Spinner from '../common/Spinner';
 
@@ -44,6 +45,8 @@ const Notes = () => {
 
 
 	const { notes, setNotes, addNote, deleteNote, pendingNote, setPendingNote } = useContext(NoteContext);
+	const { setNavBack } = useContext(NavContext);
+
 	const { loading, data } = useQuery(GET_NOTES);
 
 	useEffect(() => {
@@ -81,7 +84,11 @@ const Notes = () => {
 			<div>
 				{notes.length > 0 ? notes.map(note => (
 					<div key={note.id} className={"note-container"}>
-						<Link to={`/note/${note.id}`}>
+						<Link to={`/note/${note.id}`} onClick={() => {
+							setPendingNote(false);
+							setNavBack(true);
+						}
+						}>
 							<div className="note-contents">
 								<p className="note-title">{note.title}</p>
 								<p className="note-body"><span>{moment(note.date).format("LLL")}</span>{note.body}</p>

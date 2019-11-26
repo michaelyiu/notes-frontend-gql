@@ -58,7 +58,12 @@ ul.navbar-nav{
 	color: #fff;
 }
 
-#menu .navbar-nav a{
+#menu .navbar-nav div.nav-item{
+	cursor: pointer;
+}
+#menu .navbar-nav a,
+#menu .navbar-nav div.nav-item
+{
 	display: block;
 	border-bottom: 1px solid #455A64;
 	color: #CFD8DC;

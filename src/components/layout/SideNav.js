@@ -3,17 +3,14 @@ import { Link, useHistory } from "react-router-dom";
 
 import { AuthContext } from '../../contexts/AuthContext';
 import { NoteContext } from '../../contexts/NoteContext';
+import { NavContext } from '../../contexts/NavContext';
 
 const SideNav = () => {
 	const { isAuthenticated, toggleAuth } = useContext(AuthContext);
 	const { setPendingNote } = useContext(NoteContext);
+	const { navBack, setNavBack } = useContext(NavContext);
 
 	let history = useHistory();
-
-	const test = () => {
-		setPendingNote(true);
-
-	}
 
 	const onLogoutClick = e => {
 		e.preventDefault();
@@ -25,15 +22,26 @@ const SideNav = () => {
 	const authLinks = (
 		<nav id="menu">
 			<header>
-				<Link className="nav-link" to="/">
+				<Link className="nav-link" to="/" onClick={() => setNavBack(false)}>
 					MyNotes
 				</Link>
 			</header>
-			<ul className="navbar-nav">
+			<ul className="navbar-nav" onClick={() => setNavBack(false)}>
 				<li className="nav-item">
-					<button onClick={test}>
-						Add Note
-        	</button>
+					{
+						navBack ? (
+							<div className="nav-item" onClick={() => {
+								history.push('/notes');
+							}}>
+								Back
+							</div>
+						) : (
+								<div className="nav-item" onClick={() => setPendingNote(true)}>
+									Add Note
+								</div>
+							)
+					}
+
 				</li>
 				<li className="nav-item">
 					<Link className="nav-link" to="/notes">
@@ -50,7 +58,7 @@ const SideNav = () => {
         </a>
 				</li>
 			</ul>
-		</nav>
+		</nav >
 	)
 
 	const guestLinks = (

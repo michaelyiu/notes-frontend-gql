@@ -16,6 +16,7 @@ import Note from './components/note/Note';
 
 import AuthContextProvider from './contexts/AuthContext';
 import NoteContextProvider from './contexts/NoteContext';
+import NavContextProvider from './contexts/NavContext';
 
 
 import SideNav from './components/layout/SideNav';
@@ -30,22 +31,25 @@ const App = () => {
       <ApolloProvider client={client}>
         <AuthContextProvider>
           <NoteContextProvider>
-            <Router>
-              {/* <div className="flex-container"> */}
-              <SideNav />
-              <div className="page-content">
-                <Route exact path="/" component={Landing} />
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/login" component={Login} />
-                <Switch>
-                  <PrivateRoute exact path="/notes" component={Notes} />
-                </Switch>
-                <Switch>
-                  <PrivateRoute exact path="/note/:id" component={Note} />
-                </Switch>
-              </div>
+            <NavContextProvider>
+              <Router>
+                {/* <div className="flex-container"> */}
+                <SideNav />
+                <div className="page-content">
+                  <Route exact path="/" component={Landing} />
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path="/login" component={Login} />
+                  <Switch>
+                    <PrivateRoute exact path="/notes" component={Notes} />
+                  </Switch>
+                  <Switch>
+                    <PrivateRoute exact path="/note/:id" component={Note} />
+                  </Switch>
+                </div>
 
-            </Router>
+              </Router>.
+            </NavContextProvider>
+
           </NoteContextProvider>
         </AuthContextProvider>
       </ApolloProvider>
