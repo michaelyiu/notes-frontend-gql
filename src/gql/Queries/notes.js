@@ -7,7 +7,8 @@ const GET_NOTES = gql`
     	title
 			body
 			user
-			date
+			created_at
+			updated_at
 		}
   }
 `

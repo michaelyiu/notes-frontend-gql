@@ -12,6 +12,8 @@ import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 
 import { NoteContext } from '../../contexts/NoteContext';
 
+const moment = require('moment');
+
 const Note = () => {
 	const { findPostById, findPostAndUpdate } = useContext(NoteContext);
 	const { id } = useParams();
@@ -59,6 +61,7 @@ const Note = () => {
 				onChange={handleChange}
 			// error={errors && errors.password ? errors.password : null}
 			/>
+			<p>Last edited: {moment(postToEdit.updated_at).format("LLL")}</p>
 			<input type="submit" className="btn btn-info btn-block col-2" />
 		</form>
 	)

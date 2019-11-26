@@ -60,7 +60,6 @@ const Notes = () => {
 	const onDeleteClick = (noteId) => {
 		deleteNoteGQL({ variables: { id: noteId } })
 	}
-
 	return (
 		<div className="notes-page">
 			<form onSubmit={handleSubmit} className={"pending-note-container " + (pendingNote ? 'slideNoteDown' : null)}>
@@ -91,7 +90,7 @@ const Notes = () => {
 						}>
 							<div className="note-contents">
 								<p className="note-title">{note.title}</p>
-								<p className="note-body"><span>{moment(note.date).format("LLL")}</span>{note.body}</p>
+								<p className="note-body"><span>{moment(note.updated_at).format("LLL")}</span>{note.body}</p>
 							</div>
 						</Link>
 						<div className="note-options">
