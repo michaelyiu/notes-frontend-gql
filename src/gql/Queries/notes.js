@@ -1,8 +1,8 @@
 import { gql } from "apollo-boost";
 
 const GET_NOTES = gql`
-	query {
-		notes{
+	query($filter: String) {
+		notes(filter: $filter){
 			id
     	title
 			body

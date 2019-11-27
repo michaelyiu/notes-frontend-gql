@@ -11,6 +11,8 @@ const NotesContextProvider = (props) => {
 	})
 	const [pendingNote, setPendingNote] = useState(false);
 
+	const [filter, setFilter] = useState('');
+
 	const addNote = (note) => {
 		if (note)
 			setNotes([note, ...notes])
@@ -40,7 +42,7 @@ const NotesContextProvider = (props) => {
 	}, [notes])
 
 	return (
-		<NoteContext.Provider value={{ notes, setNotes, addNote, deleteNote, clearNotes, pendingNote, setPendingNote, findPostById, findPostAndUpdate }}>
+		<NoteContext.Provider value={{ notes, setNotes, addNote, deleteNote, clearNotes, pendingNote, setPendingNote, findPostById, findPostAndUpdate, filter, setFilter }}>
 			{props.children}
 		</NoteContext.Provider>
 	)

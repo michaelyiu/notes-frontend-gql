@@ -33,8 +33,11 @@ ul.navbar-nav{
 	cursor: pointer;
 }
 
-#menu .navbar-nav a,
-#menu .navbar-nav div.nav-item
+#menu .navbar-nav a{
+	color: #CFD8DC;
+
+}
+#menu .navbar-nav li.nav-item
 {
 	display: block;
 	color: #CFD8DC;
@@ -44,7 +47,27 @@ ul.navbar-nav{
 	transition: all 0.2s ease-in-out;
 }
 
-#menu .navbar-nav a:hover,
-#menu .navbar-nav div.nav-item:hover{
+#menu .navbar-nav li.nav-item:hover{
+	background: rgba(0, 0, 0, 0.08);
+}
+
+
+.search-notes{
+	border: none;
+	background:#37474F;
+	width:80%;
+	color: #fff;
+}
+.search-notes:hover{
+	background: rgba(0, 0, 0, 0.08);
+}
+
+.search-submit{
+	border: none;
+	background-color: #37474F;
+	color: #fff;
+}
+
+.search-notes:hover{
 	background: rgba(0, 0, 0, 0.08);
 }

@@ -8,22 +8,22 @@ import Note from "./Note";
 
 import Spinner from '../common/Spinner';
 import AddNote from '../note/AddNote';
+import { NoteNotFound } from '../common/NoteNotFound';
 
 
 const Notes = () => {
+	const { notes, setNotes, filter } = useContext(NoteContext);
 
+	const { loading, data } = useQuery(GET_NOTES, {
+		variables: { filter }
+	});
 
-	const { notes, setNotes } = useContext(NoteContext);
-
-
-
-	const { loading, data } = useQuery(GET_NOTES);
 
 	useEffect(() => {
 		if (data && data.notes) {
 			setNotes(data.notes)
 		}
-	}, [setNotes, data])
+	}, [setNotes, data, filter])
 
 	if (loading) return <Spinner />
 
@@ -31,7 +31,7 @@ const Notes = () => {
 		<div className="notes-page">
 			<AddNote />
 			<div className="notes-list">
-				{notes.length > 0 ? notes.map(note => <Note key={note.id} note={note} />) : "Your notes will show up here!"}
+				{notes.length > 0 ? notes.map(note => <Note key={note.id} note={note} />) : <NoteNotFound />}
 			</div>
 		</div>
 	)

@@ -4,8 +4,10 @@ import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from '../../contexts/AuthContext';
 import { NoteContext } from '../../contexts/NoteContext';
 import { NavContext } from '../../contexts/NavContext';
+import SearchNotes from '../notes/SearchNotes';
 
 const SideNav = () => {
+
 	const { isAuthenticated, toggleAuth } = useContext(AuthContext);
 	const { setPendingNote } = useContext(NoteContext);
 	const { navBack, setNavBack } = useContext(NavContext);
@@ -48,6 +50,9 @@ const SideNav = () => {
 					<Link className="nav-link" to="/notes">
 						Notes
         	</Link>
+				</li>
+				<li className="nav-item">
+					<SearchNotes />
 				</li>
 				<li className="nav-item">
 					<a

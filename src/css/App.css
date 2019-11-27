@@ -5,7 +5,6 @@
 
 
 
-
 @media only screen and (min-width: 768px) {
   /* For desktop: */
   .col-1 {width: 8.33%;}
@@ -20,4 +19,11 @@
   .col-10 {width: 83.33%;}
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
+}
+
+.noteNotFound{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
