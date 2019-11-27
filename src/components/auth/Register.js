@@ -25,12 +25,11 @@ const Register = () => {
 		}
 	);
 
+	let errors;
+	if (!loading && error) {
+		errors = error.graphQLErrors[0].extensions.exception.errors;
+	}
 	console.log(error);
-	// let errors;
-	// if (!loading && error) {
-	// 	errors = error.graphQLErrors[0].extensions.exception.errors;
-	// }
-	// console.log()
 
 	if (data) {
 		// 	// Redirect to home page
@@ -52,7 +51,7 @@ const Register = () => {
 								name="name"
 								value={values.name}
 								onChange={handleChange}
-							// error={errors && errors.name ? errors.name : null}
+								error={errors && errors.name ? errors.name : null}
 							/>
 							<TextFieldGroup
 								placeholder="Email Address"
@@ -60,7 +59,7 @@ const Register = () => {
 								type="email"
 								value={values.email}
 								onChange={handleChange}
-							// error={errors && errors.email ? errors.email : null}
+								error={errors && errors.email ? errors.email : null}
 							/>
 							<TextFieldGroup
 								placeholder="Password"
@@ -68,7 +67,7 @@ const Register = () => {
 								type="password"
 								value={values.password}
 								onChange={handleChange}
-							// error={errors && errors.password ? errors.password : null}
+								error={errors && errors.password ? errors.password : null}
 							/>
 							<TextFieldGroup
 								placeholder="Confirm Password"
@@ -76,7 +75,7 @@ const Register = () => {
 								type="password"
 								value={values.password2}
 								onChange={handleChange}
-							// error={errors && errors.password2 ? errors.password2 : null}
+								error={errors && errors.password2 ? errors.password2 : null}
 							/>
 							<input type="submit" className="btn btn-info btn-block col-2" />
 						</form>

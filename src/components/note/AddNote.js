@@ -8,6 +8,9 @@ import { NoteContext } from '../../contexts/NoteContext';
 
 const AddNote = () => {
 	const { values, handleChange, handleSubmit } = useForm(() => {
+		if (values.title === '' && values.body === '') {
+			setPendingNote(false);
+		}
 		addNoteGQL(values);
 	}, {
 		title: '',

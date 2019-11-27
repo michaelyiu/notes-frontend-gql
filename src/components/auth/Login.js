@@ -71,7 +71,7 @@ const Login = () => {
 								type="email"
 								value={values.email}
 								onChange={handleChange}
-							// error={errors && errors.email ? errors.email : null}
+								error={errors && errors.email ? errors.email : null}
 							/>
 
 							<TextFieldGroup
@@ -80,7 +80,7 @@ const Login = () => {
 								type="password"
 								value={values.password}
 								onChange={handleChange}
-							// error={errors && errors.password ? errors.password : null}
+								error={errors && errors.password ? errors.password : null}
 							/>
 
 							<input type="submit" className="btn btn-info btn-block col-2" />
