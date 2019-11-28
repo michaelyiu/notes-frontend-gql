@@ -15,7 +15,8 @@ const Notes = () => {
 	const { notes, setNotes, filter } = useContext(NoteContext);
 
 	const { loading, data } = useQuery(GET_NOTES, {
-		variables: { filter }
+		variables: { filter },
+		fetchPolicy: 'network-only'
 	});
 
 	// watches the filter state from the NoteContext, data from the query hook and setNotes, will rerender if state changes
