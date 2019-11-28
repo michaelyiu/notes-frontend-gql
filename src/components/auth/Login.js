@@ -83,7 +83,7 @@ const Login = () => {
 								error={errors && errors.password ? errors.password : null}
 							/>
 
-							<input type="submit" className="btn btn-info btn-block col-2" />
+							<input type="submit" className="btn-submit col-2" />
 
 						</form>
 					</div>

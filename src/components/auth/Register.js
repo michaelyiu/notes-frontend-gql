@@ -76,7 +76,7 @@ const Register = () => {
 								onChange={handleChange}
 								error={errors && errors.password2 ? errors.password2 : null}
 							/>
-							<input type="submit" className="btn btn-info btn-block col-2" />
+							<input type="submit" className="btn-submit col-2" />
 						</form>
 
 					</div>

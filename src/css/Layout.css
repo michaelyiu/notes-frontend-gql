@@ -1,5 +1,5 @@
 body{
-	padding-left: 200px;
+	padding-left: 125px;
 }
 
 .page-content{
@@ -14,4 +14,10 @@ body{
 
 .row .col-8{
  margin: auto;
+}
+
+@media (min-width: 768px) { 
+	body{
+		padding-left: 200px;
+	}
 }

@@ -13,7 +13,7 @@ const SearchNotes = () => {
 	const { setFilter } = useContext(NoteContext);
 	// form sets the filter onSubmit
 	return (
-		<form onSubmit={handleSubmit}>
+		<form className="searchForm" onSubmit={handleSubmit}>
 			<input type="text" className="search-notes" placeholder="Search notes.." name="filter" onChange={handleChange} />
 			<button className="search-submit" type="submit"><i className="fa fa-search"></i></button>
 		</form>
