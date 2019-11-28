@@ -29,7 +29,6 @@ const Register = () => {
 	if (!loading && error) {
 		errors = error.graphQLErrors[0].extensions.exception.errors;
 	}
-	console.log(error);
 
 	// Redirect to home page 
 	if (data) {
