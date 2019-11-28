@@ -18,7 +18,7 @@ const Notes = () => {
 		variables: { filter }
 	});
 
-
+	// watches the filter state from the NoteContext, data from the query hook and setNotes, will rerender if state changes
 	useEffect(() => {
 		if (data && data.notes) {
 			setNotes(data.notes)
@@ -27,6 +27,7 @@ const Notes = () => {
 
 	if (loading) return <Spinner />
 
+	// 
 	return (
 		<div className="notes-page">
 			<AddNote />

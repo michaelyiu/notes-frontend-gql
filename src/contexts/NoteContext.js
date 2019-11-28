@@ -35,8 +35,6 @@ const NotesContextProvider = (props) => {
 		setNotes([]);
 	}
 
-
-
 	useEffect(() => {
 		localStorage.setItem('notes', JSON.stringify(notes))
 	}, [notes])

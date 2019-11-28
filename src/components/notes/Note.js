@@ -29,6 +29,8 @@ const Note = (props) => {
 	};
 
 	return (
+		// onEditClick, states are set to reset the AddNote pending state
+		// Back button shows up on the navbar
 		<div key={note.id} className={"note-container"}>
 			<Link to={`/edit-note/${note.id}`} onClick={() => {
 				setPendingNote(false);

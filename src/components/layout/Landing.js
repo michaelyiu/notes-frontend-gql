@@ -8,8 +8,10 @@ const Landing = () => {
 
   const history = useHistory();
 
+  //if logged in, then automatically push to notes page
   if (isAuthenticated)
     history.push("/notes");
+
   return (
     <div className="landing">
       <div className="container">

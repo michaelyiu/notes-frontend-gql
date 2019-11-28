@@ -19,6 +19,7 @@ const AddNote = () => {
 
 	const { addNote, pendingNote, setPendingNote } = useContext(NoteContext);
 
+	// after the ADD_NOTE mutation hook is run, it will ONLY run the states and successful, it will add the note to context and set the pendingNote to false
 	const [addNoteGQL] = useMutation(
 		ADD_NOTE,
 		{

@@ -31,8 +31,8 @@ const Register = () => {
 	}
 	console.log(error);
 
+	// Redirect to home page 
 	if (data) {
-		// 	// Redirect to home page
 		return <Redirect to='/login' />
 	}
 

@@ -43,6 +43,10 @@ const Login = () => {
 		// Redirect to home page
 		return <Redirect to='/notes' />
 	}
+
+	/*if authenticated and cant retrieve token, we toggle the auth back to false to reset. 
+	  if we CAN retrieve the token then we're authenticated
+	*/
 	if (isAuthenticated && !window.localStorage.getItem('token')) {
 		toggleAuth();
 	}
@@ -50,10 +54,6 @@ const Login = () => {
 		return <Redirect to='/notes' />
 
 	}
-	// 	console.log("im guessing redirect happens here")
-
-	// 	return <Redirect to='/notes' />
-	// }
 
 	return (
 		<div className="login">

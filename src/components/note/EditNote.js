@@ -17,6 +17,8 @@ const moment = require('moment');
 const EditNote = () => {
 	const { findPostById, findPostAndUpdate } = useContext(NoteContext);
 	const { setNavBack } = useContext(NavContext);
+
+	//individual id post is passed into the url, we can get it
 	const { id } = useParams();
 	const postToEdit = findPostById(id);
 
@@ -54,9 +56,7 @@ const EditNote = () => {
 					type="title"
 					value={values.title}
 					onChange={handleChange}
-				// error={errors && errors.email ? errors.email : null}
 				/>
-
 				<TextAreaFieldGroup
 					className="edit-note-body"
 					placeholder="Body"
@@ -64,7 +64,6 @@ const EditNote = () => {
 					type="body"
 					value={values.body}
 					onChange={handleChange}
-				// error={errors && errors.password ? errors.password : null}
 				/>
 				<p>Last edited: {moment(postToEdit.updated_at).format("LLL")}</p>
 				<input type="submit" className="btn-submit col-2" />

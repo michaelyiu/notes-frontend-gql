@@ -14,6 +14,7 @@ const SideNav = () => {
 
 	let history = useHistory();
 
+	//clear localstorage and all states on log out
 	const onLogoutClick = e => {
 		e.preventDefault();
 		setPendingNote(false);
@@ -22,6 +23,9 @@ const SideNav = () => {
 		history.push("/login");
 	}
 
+	/* navBack state from NavContext for conditional rendering between 'Back' and 'Add Note'
+	*	When Add note is clicked, form will pop up showing AddNote component
+	*/
 	const authLinks = (
 		<nav id="menu">
 			<header>
@@ -89,6 +93,7 @@ const SideNav = () => {
 		</nav>
 	);
 
+	// conditionally render navbars depending if you're logged in or not
 	return (
 		<React.Fragment>
 			{isAuthenticated ? authLinks : guestLinks}
