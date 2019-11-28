@@ -67,6 +67,11 @@ const SideNav = () => {
 						Logout
         </a>
 				</li>
+				<li className="nav-item last-item">
+					<p>
+						Logged in as: {localStorage.getItem('email')}
+					</p>
+				</li>
 			</ul>
 		</nav >
 	)
